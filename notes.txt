@@ -1,0 +1,35 @@
+// Login sequence
+loginService.login(com.riotgames.platform.login.AuthenticationCredentials)
+auth.operation8(Base64({username}:{token}))
+
+// Subscribe events?
+messagingDestination.operation0[DSSubtopic='gn-{clientId}']
+messagingDestination.operation0[DSSubtopic='cn-{clientId}']
+messagingDestination.operation0[DSSubtopic='bc-{clientId}']						?? Broadcast events ??
+
+// Pull information after login
+clientFacadeService.getLoginDataPacketForUser : com.riotgames.platform.clientfacade.domain.LoginDataPacket
+
+matchmakerService.getAvailableQueues() : List<com.riotgames.platform.matchmaking.GameQueueConfig>
+
+* inventoryService.getSumonerActiveBoosts() : com.riotgames.platform.summoner.boost.SummonerActiveBoostsDTO
+inventoryService.getAvailableChampions() : List<com.riotgames.platform.catalog.champion.ChampionDTO>
+
+summonerRuneService.getSummonerRuneInventory(int[]) : com.riotgames.platform.summoner.runes.SummonerRuneInventory
+
+summonerService.getSummonerByName(string) : com.riotgames.platform.summoner.PublicSummoner
+summonerService.getSummonerNames(accountId[]) : List<string>
+summonerService.getAllSummonerDataByAccount(accountId) : com.riotgames.platform.summoner.AllSummonerData
+summonerService.getAllPublicSummonerDataByAccount(accountId) : com.riotgames.platform.summoner.AllPublicSummonerDataDTO
+summonerService.getSummonerInternalNameByName(name) : string
+
+playerStatsService.retrievePlayerStatsByAccountId([accountId, "CURRENT"]) : com.riotgames.platform.statistics.PlayerLifetimeStats
+playerStatsService.retrieveTopPlayedChampions([accountId, gamemode (ie "CLASSIC")]) : ?
+playerStatsService.getRecentGames(bigint) : com.riotgames.platform.statistics.RecentGames
+
+summonerTeamService.findTeamById(com.riotgames.team.TeamId) : com.riotgames.team.dto.TeamDTO
+summonerTeamService.findTeamByName(string) : com.riotgames.team.dto.TeamDTO
+summonerTeamService.findTeamByTag(string) : com.riotgames.team.dto.TeamDTO
+summonerTeamService.findPlayer(int) : com.riotgames.team.dto.PlayerDTO
+
+gameService.getGame(int) : 

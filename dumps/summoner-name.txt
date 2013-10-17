@@ -1,0 +1,128 @@
+{
+  "$type": "System.Collections.Generic.List`1[[FluorineFx.Messaging.Rtmp.Event.Notify, FluorineFx]], mscorlib",
+  "$values": [
+    {
+      "$type": "FluorineFx.Messaging.Rtmp.Event.FlexInvoke, FluorineFx",
+      "CmdData": null,
+      "Data": null,
+      "InvokeId": 22,
+      "ServiceCall": {
+        "$type": "FluorineFx.Messaging.Rtmp.Service.PendingCall, FluorineFx",
+        "Result": null,
+        "IsSuccess": false,
+        "ServiceMethodName": null,
+        "ServiceName": null,
+        "Arguments": {
+          "$type": "System.Object[], mscorlib",
+          "$values": [
+            {
+              "$type": "FluorineFx.Messaging.Messages.RemotingMessage, FluorineFx",
+              "source": null,
+              "operation": "getSummonerByName",
+              "headers": {
+                "$type": "FluorineFx.ASObject, FluorineFx",
+                "DSEndpoint": "my-rtmps",
+                "DSId": "8CF7BAA5-703E-4CA6-C726-73125C2A0FA1",
+                "DSRequestTimeout": 60
+              },
+              "body": {
+                "$type": "System.Object[], mscorlib",
+                "$values": [
+                  "Franticbliss"
+                ]
+              },
+              "messageId": "8E6AD018-8703-67BC-7D69-C2F8713938F9",
+              "clientId": null,
+              "timeToLive": 0,
+              "timestamp": 0,
+              "destination": "summonerService"
+            }
+          ]
+        },
+        "Status": 1,
+        "Exception": null
+      },
+      "ConnectionParameters": null,
+      "EventType": 2,
+      "Header": {
+        "$type": "FluorineFx.Messaging.Rtmp.RtmpHeader, FluorineFx",
+        "ChannelId": 3,
+        "DataType": 17,
+        "Size": 322,
+        "StreamId": 0,
+        "Timer": 4880,
+        "IsTimerRelative": true
+      },
+      "Object": null,
+      "Timestamp": 4880,
+      "ExtendedTimestamp": -1,
+      "DataType": 17,
+      "Source": null,
+      "HasSource": false
+    },
+    {
+      "$type": "FluorineFx.Messaging.Rtmp.Event.FlexInvoke, FluorineFx",
+      "CmdData": null,
+      "Data": null,
+      "InvokeId": 22,
+      "ServiceCall": {
+        "$type": "FluorineFx.Messaging.Rtmp.Service.PendingCall, FluorineFx",
+        "Result": null,
+        "IsSuccess": false,
+        "ServiceMethodName": "_result",
+        "ServiceName": null,
+        "Arguments": {
+          "$type": "System.Object[], mscorlib",
+          "$values": [
+            {
+              "$type": "DSK, LoLNotes",
+              "CorrelationId": "8E6AD018-8703-67BC-7D69-C2F8713938F9",
+              "CorrelationIdBytes": "ŽjÐ\u0018‡\u0003g¼}iÂøq98ù",
+              "Body": {
+                "$type": "FluorineFx.ASObject, FluorineFx",
+                "internalName": "franticbliss",
+                "dataVersion": 0,
+                "acctId": 32444040.0,
+                "name": "Franticbliss",
+                "profileIconId": 547,
+                "revisionDate": "\/Date(1381954432364)\/",
+                "revisionId": 0.0,
+                "summonerLevel": 30.0,
+                "summonerId": 19744972.0,
+                "futureData": null,
+                "TypeName": "com.riotgames.platform.summoner.PublicSummoner"
+              },
+              "ClientId": "8D009694-4219-0765-3A62-ED60ADCE48A2",
+              "ClientIdBytes": "\u0000–”B\u0019\u0007e:bí`­ÎH¢",
+              "Destination": null,
+              "Headers": null,
+              "MessageId": "8D009696-B339-340A-E92B-76B6C88697E7",
+              "MessageIdBytes": "\u0000––³94\né+v¶È†—ç",
+              "TimeStamp": 1381955564899,
+              "TimeToLive": 0
+            }
+          ]
+        },
+        "Status": 1,
+        "Exception": null
+      },
+      "ConnectionParameters": null,
+      "EventType": 2,
+      "Header": {
+        "$type": "FluorineFx.Messaging.Rtmp.RtmpHeader, FluorineFx",
+        "ChannelId": 3,
+        "DataType": 17,
+        "Size": 336,
+        "StreamId": 0,
+        "Timer": 0,
+        "IsTimerRelative": false
+      },
+      "Object": null,
+      "Timestamp": 0,
+      "ExtendedTimestamp": -1,
+      "DataType": 17,
+      "Source": null,
+      "HasSource": false
+    }
+  ]
+}

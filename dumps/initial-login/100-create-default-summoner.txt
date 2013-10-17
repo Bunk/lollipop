@@ -1,0 +1,260 @@
+{
+  "$type": "System.Collections.Generic.List`1[[FluorineFx.Messaging.Rtmp.Event.Notify, FluorineFx]], mscorlib",
+  "$values": [
+    {
+      "$type": "FluorineFx.Messaging.Rtmp.Event.FlexInvoke, FluorineFx",
+      "CmdData": null,
+      "Data": null,
+      "InvokeId": 15,
+      "ServiceCall": {
+        "$type": "FluorineFx.Messaging.Rtmp.Service.PendingCall, FluorineFx",
+        "Result": null,
+        "IsSuccess": false,
+        "ServiceMethodName": null,
+        "ServiceName": null,
+        "Arguments": {
+          "$type": "System.Object[], mscorlib",
+          "$values": [
+            {
+              "$type": "FluorineFx.Messaging.Messages.RemotingMessage, FluorineFx",
+              "source": null,
+              "operation": "createDefaultSummoner",
+              "timeToLive": 0,
+              "clientId": null,
+              "headers": {
+                "$type": "FluorineFx.ASObject, FluorineFx",
+                "DSEndpoint": "my-rtmps",
+                "DSId": "987AB6EB-2258-B3FE-8A05-D0A458439C3E",
+                "DSRequestTimeout": 60
+              },
+              "body": {
+                "$type": "System.Object[], mscorlib",
+                "$values": [
+                  "BunkTester2"
+                ]
+              },
+              "messageId": "69901297-ACB5-5552-8253-C7B2AD098371",
+              "timestamp": 0,
+              "destination": "summonerService"
+            }
+          ]
+        },
+        "Status": 1,
+        "Exception": null
+      },
+      "ConnectionParameters": null,
+      "EventType": 2,
+      "Header": {
+        "$type": "FluorineFx.Messaging.Rtmp.RtmpHeader, FluorineFx",
+        "ChannelId": 3,
+        "DataType": 17,
+        "Size": 325,
+        "StreamId": 0,
+        "Timer": 82939,
+        "IsTimerRelative": true
+      },
+      "Object": null,
+      "Timestamp": 82939,
+      "ExtendedTimestamp": -1,
+      "DataType": 17,
+      "Source": null,
+      "HasSource": false
+    },
+    {
+      "$type": "FluorineFx.Messaging.Rtmp.Event.FlexInvoke, FluorineFx",
+      "CmdData": null,
+      "Data": null,
+      "InvokeId": 15,
+      "ServiceCall": {
+        "$type": "FluorineFx.Messaging.Rtmp.Service.PendingCall, FluorineFx",
+        "Result": null,
+        "IsSuccess": false,
+        "ServiceMethodName": "_result",
+        "ServiceName": null,
+        "Arguments": {
+          "$type": "System.Object[], mscorlib",
+          "$values": [
+            {
+              "$type": "DSK, LoLNotes",
+              "CorrelationId": "69901297-ACB5-5552-8253-C7B2AD098371",
+              "CorrelationIdBytes": "i\u0012—¬µUR‚SÇ²­\tƒq",
+              "Body": {
+                "$type": "FluorineFx.ASObject, FluorineFx",
+                "spellBook": {
+                  "$type": "FluorineFx.ASObject, FluorineFx",
+                  "bookPagesJson": null,
+                  "dataVersion": 0,
+                  "bookPages": {
+                    "$type": "FluorineFx.AMF3.ArrayCollection, FluorineFx",
+                    "$values": [
+                      {
+                        "$type": "FluorineFx.ASObject, FluorineFx",
+                        "dataVersion": 0,
+                        "pageId": 63992434.0,
+                        "name": "@@!PaG3!@@63992434",
+                        "current": false,
+                        "slotEntries": {
+                          "$type": "FluorineFx.AMF3.ArrayCollection, FluorineFx",
+                          "$values": []
+                        },
+                        "createDate": "\/Date(1382034879221)\/",
+                        "summonerId": 48346779.0,
+                        "futureData": null,
+                        "TypeName": "com.riotgames.platform.summoner.spellbook.SpellBookPageDTO"
+                      },
+                      {
+                        "$type": "FluorineFx.ASObject, FluorineFx",
+                        "dataVersion": 0,
+                        "pageId": 63992433.0,
+                        "name": "@@!PaG3!@@63992433",
+                        "current": false,
+                        "slotEntries": {
+                          "$type": "FluorineFx.AMF3.ArrayCollection, FluorineFx",
+                          "$values": []
+                        },
+                        "createDate": "\/Date(1382034879221)\/",
+                        "summonerId": 48346779.0,
+                        "futureData": null,
+                        "TypeName": "com.riotgames.platform.summoner.spellbook.SpellBookPageDTO"
+                      }
+                    ]
+                  },
+                  "dateString": "Thu Oct 17 11:34:39 PDT 2013",
+                  "summonerId": 48346779.0,
+                  "futureData": null,
+                  "TypeName": "com.riotgames.platform.summoner.spellbook.SpellBookDTO"
+                },
+                "dataVersion": 0,
+                "summonerDefaultSpells": {
+                  "$type": "FluorineFx.ASObject, FluorineFx",
+                  "dataVersion": 0,
+                  "summonerDefaultSpellsJson": null,
+                  "summonerDefaultSpellMap": {
+                    "$type": "FluorineFx.ASObject, FluorineFx",
+                    "TypeName": null
+                  },
+                  "summonerId": 48346779.0,
+                  "futureData": null,
+                  "TypeName": "com.riotgames.platform.summoner.SummonerDefaultSpells"
+                },
+                "summonerTalentsAndPoints": {
+                  "$type": "FluorineFx.ASObject, FluorineFx",
+                  "talentPoints": 1,
+                  "dataVersion": 0,
+                  "modifyDate": null,
+                  "createDate": null,
+                  "summonerId": 48346779.0,
+                  "futureData": null,
+                  "TypeName": "com.riotgames.platform.summoner.SummonerTalentsAndPoints"
+                },
+                "summoner": {
+                  "$type": "FluorineFx.ASObject, FluorineFx",
+                  "seasonTwoTier": "UNRANKED",
+                  "internalName": "bunktester2",
+                  "previousSeasonHighestTier": "UNRANKED",
+                  "acctId": 211233696.0,
+                  "helpFlag": false,
+                  "sumId": 48346779.0,
+                  "profileIconId": -1,
+                  "displayEloQuestionaire": true,
+                  "lastGameDate": null,
+                  "advancedTutorialFlag": false,
+                  "revisionDate": "\/Date(1382034879201)\/",
+                  "revisionId": 0.0,
+                  "futureData": null,
+                  "dataVersion": 0,
+                  "name": "BunkTester2",
+                  "nameChangeFlag": false,
+                  "tutorialFlag": false,
+                  "TypeName": "com.riotgames.platform.summoner.Summoner"
+                },
+                "masteryBook": {
+                  "$type": "FluorineFx.ASObject, FluorineFx",
+                  "bookPagesJson": null,
+                  "dataVersion": 0,
+                  "bookPages": {
+                    "$type": "FluorineFx.AMF3.ArrayCollection, FluorineFx",
+                    "$values": [
+                      {
+                        "$type": "FluorineFx.ASObject, FluorineFx",
+                        "talentEntries": {
+                          "$type": "FluorineFx.AMF3.ArrayCollection, FluorineFx",
+                          "$values": []
+                        },
+                        "dataVersion": 0,
+                        "pageId": 32908129.0,
+                        "name": "@@!PaG3!@@32908129",
+                        "current": false,
+                        "createDate": "\/Date(1382034879227)\/",
+                        "summonerId": 48346779.0,
+                        "futureData": null,
+                        "TypeName": "com.riotgames.platform.summoner.masterybook.MasteryBookPageDTO"
+                      }
+                    ]
+                  },
+                  "dateString": "Thu Oct 17 11:34:39 PDT 2013",
+                  "summonerId": 48346779.0,
+                  "futureData": null,
+                  "TypeName": "com.riotgames.platform.summoner.masterybook.MasteryBookDTO"
+                },
+                "summonerLevelAndPoints": {
+                  "$type": "FluorineFx.ASObject, FluorineFx",
+                  "infPoints": 0.0,
+                  "dataVersion": 0,
+                  "expPoints": 0.0,
+                  "summonerLevel": 1.0,
+                  "summonerId": 48346779.0,
+                  "futureData": null,
+                  "TypeName": "com.riotgames.platform.summoner.SummonerLevelAndPoints"
+                },
+                "summonerLevel": {
+                  "$type": "FluorineFx.ASObject, FluorineFx",
+                  "expTierMod": 1.0,
+                  "grantRp": 0.0,
+                  "expForLoss": 43.0,
+                  "dataVersion": 1,
+                  "summonerTier": 1.0,
+                  "infTierMod": 1.0,
+                  "expToNextLevel": 90.0,
+                  "expForWin": 72.0,
+                  "summonerLevel": 1.0,
+                  "futureData": null,
+                  "TypeName": "com.riotgames.platform.summoner.SummonerLevel"
+                },
+                "futureData": null,
+                "TypeName": "com.riotgames.platform.summoner.AllSummonerData"
+              },
+              "ClientId": "988B46A3-C90C-153D-6675-2CA24FBC14C9",
+              "ClientIdBytes": "˜‹F£É\f\u0015=fu,¢O¼\u0014É",
+              "Destination": null,
+              "Headers": null,
+              "MessageId": "988B4705-710E-DDCA-9869-2AA39CD9C5CB",
+              "MessageIdBytes": "˜‹G\u0005q\u000eÝÊ˜i*£œÙÅË",
+              "TimeStamp": 1382034879233,
+              "TimeToLive": 0
+            }
+          ]
+        },
+        "Status": 1,
+        "Exception": null
+      },
+      "ConnectionParameters": null,
+      "EventType": 2,
+      "Header": {
+        "$type": "FluorineFx.Messaging.Rtmp.RtmpHeader, FluorineFx",
+        "ChannelId": 3,
+        "DataType": 17,
+        "Size": 1817,
+        "StreamId": 0,
+        "Timer": 0,
+        "IsTimerRelative": false
+      },
+      "Object": null,
+      "Timestamp": 0,
+      "ExtendedTimestamp": -1,
+      "DataType": 17,
+      "Source": null,
+      "HasSource": false
+    }
+  ]
+}

@@ -1,0 +1,151 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{D1F112AE-03A4-4E31-AC21-54382CC67602}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>com.riotgames</RootNamespace>
+    <AssemblyName>Lollipop.DTO</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
+    <RestorePackages>true</RestorePackages>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="FluorineFx">
+      <HintPath>..\..\..\lib\FluorineFx.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Newtonsoft.Json.5.0.6\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="platform\account\AccountSummary.cs" />
+    <Compile Include="platform\broadcast\BroadcastNotification.cs" />
+    <Compile Include="platform\catalog\champion\ChampionDTO.cs" />
+    <Compile Include="platform\catalog\champion\ChampionSkinDTO.cs" />
+    <Compile Include="platform\catalog\Effect.cs" />
+    <Compile Include="platform\catalog\ItemEffect.cs" />
+    <Compile Include="platform\catalog\runes\Rune.cs" />
+    <Compile Include="platform\catalog\runes\RuneType.cs" />
+    <Compile Include="platform\game\BannedChampion.cs" />
+    <Compile Include="platform\game\FeaturedObserverGames.cs" />
+    <Compile Include="platform\game\GamePickMode.cs" />
+    <Compile Include="platform\game\GameType.cs" />
+    <Compile Include="platform\game\GameTypeConfigDTO.cs" />
+    <Compile Include="platform\game\ObserverGame.cs" />
+    <Compile Include="platform\game\ObserverPlayerParticipant.cs" />
+    <Compile Include="platform\game\PlatformGameLifecycleDTO.cs" />
+    <Compile Include="platform\game\PlayerChampionSelectionDTO.cs" />
+    <Compile Include="platform\game\PlayerCredentialsDto.cs" />
+    <Compile Include="platform\game\PlayerParticipant.cs" />
+    <Compile Include="platform\harassment\LcdsResponseString.cs" />
+    <Compile Include="platform\leagues\client\dto\SummonerLeaguesDTO.cs" />
+    <Compile Include="platform\leagues\LeagueQueue.cs" />
+    <Compile Include="platform\leagues\LeagueRank.cs" />
+    <Compile Include="platform\leagues\pojo\LeagueItemDTO.cs" />
+    <Compile Include="platform\leagues\pojo\LeagueListDTO.cs" />
+    <Compile Include="platform\leagues\pojo\MiniSeriesDTO.cs" />
+    <Compile Include="platform\login\AuthenticationCredentials.cs" />
+    <Compile Include="platform\login\Session.cs" />
+    <Compile Include="platform\messaging\UnexpectedServiceException.cs" />
+    <Compile Include="platform\statistics\ChampionStatInfo.cs" />
+    <Compile Include="platform\statistics\EndOfGameStats.cs" />
+    <Compile Include="platform\statistics\GameMode.cs" />
+    <Compile Include="platform\statistics\PlayerParticipantStatsSummary.cs" />
+    <Compile Include="platform\statistics\RawStatDTO.cs" />
+    <Compile Include="platform\statistics\SummaryAggStatType.cs" />
+    <Compile Include="platform\statistics\team\TeamAggregatedStatsDTO.cs" />
+    <Compile Include="platform\statistics\team\TeamPlayerAggregatedStatsDTO.cs" />
+    <Compile Include="platform\statistics\team\TeamStatType.cs" />
+    <Compile Include="platform\summoner\AllPublicSummonerDataDTO.cs" />
+    <Compile Include="platform\summoner\RuneSlot.cs" />
+    <Compile Include="platform\summoner\RuneType.cs" />
+    <Compile Include="team\CreatedTeam.cs" />
+    <Compile Include="team\dto\PlayerDTO.cs" />
+    <Compile Include="team\dto\TeamDTO.cs" />
+    <Compile Include="team\stats\TeamStatDetail.cs" />
+    <Compile Include="team\stats\TeamStatSummary.cs" />
+    <Compile Include="team\TeamId.cs" />
+    <Compile Include="team\TeamInfo.cs" />
+    <Compile Include="VersionedObject.cs" />
+    <Compile Include="platform\clientfacade\domain\LoginDatapacket.cs" />
+    <Compile Include="platform\gameclient\domain\AllPublicSummonerDataDTO.cs" />
+    <Compile Include="platform\gameclient\domain\FellowPlayerInfo.cs" />
+    <Compile Include="platform\gameclient\domain\RawStat.cs" />
+    <Compile Include="platform\gameclient\domain\Spell.cs" />
+    <Compile Include="platform\statistics\AggregatedStat.cs" />
+    <Compile Include="platform\statistics\AggregatedStats.cs" />
+    <Compile Include="platform\statistics\AggregatedStatsKey.cs" />
+    <Compile Include="platform\statistics\LeaverPenaltyStats.cs" />
+    <Compile Include="platform\statistics\PlayerGameStats.cs" />
+    <Compile Include="platform\statistics\PlayerLifeTimeStats.cs" />
+    <Compile Include="platform\statistics\PlayerStats.cs" />
+    <Compile Include="platform\statistics\PlayerStatSummaries.cs" />
+    <Compile Include="platform\statistics\PlayerStatSummary.cs" />
+    <Compile Include="platform\statistics\RecentGames.cs" />
+    <Compile Include="platform\statistics\SummaryAggStat.cs" />
+    <Compile Include="platform\statistics\SummaryAggStats.cs" />
+    <Compile Include="platform\statistics\TimeTrackedStat.cs" />
+    <Compile Include="platform\summoner\AllSummonerData.cs" />
+    <Compile Include="platform\summoner\BasePublicSummonerDTO.cs" />
+    <Compile Include="platform\summoner\PublicSummoner.cs" />
+    <Compile Include="platform\summoner\spellbook\SlotEntry.cs" />
+    <Compile Include="platform\summoner\spellbook\SpellBook.cs" />
+    <Compile Include="platform\summoner\spellbook\SpellBookPage.cs" />
+    <Compile Include="platform\summoner\Summoner.cs" />
+    <Compile Include="platform\summoner\SummonerAssociatedTalent.cs" />
+    <Compile Include="platform\summoner\SummonerAssociatedTalentPK.cs" />
+    <Compile Include="platform\summoner\SummonerCatalog.cs" />
+    <Compile Include="platform\summoner\SummonerDefaultSpells.cs" />
+    <Compile Include="platform\summoner\SummonerGameModeSpells.cs" />
+    <Compile Include="platform\summoner\SummonerLevel.cs" />
+    <Compile Include="platform\summoner\SummonerLevelAndPoints.cs" />
+    <Compile Include="platform\summoner\SummonerTalentsAndPoints.cs" />
+    <Compile Include="platform\summoner\Talent.cs" />
+    <Compile Include="platform\summoner\TalentGroup.cs" />
+    <Compile Include="platform\summoner\TalentRow.cs" />
+    <Compile Include="platform\systemstate\ClientSystemStatesNotification.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(SolutionDir)\.nuget\nuget.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
