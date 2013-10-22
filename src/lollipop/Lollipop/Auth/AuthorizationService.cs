@@ -12,6 +12,8 @@ namespace Lollipop.Auth
 {
     public class AuthorizationService : IAuthorize
     {
+        private const int MaxRetries = 10;
+
         public async Task<string> GetAuthToken(LeagueRegion region, string username, string password)
         {
             var authResponse = await TryLogin(region, username, password);
@@ -83,7 +85,7 @@ namespace Lollipop.Auth
             if (!string.IsNullOrWhiteSpace(response.Token))
                 return response.Token;
 
-            if (retryCount > 5)
+            if (retryCount > MaxRetries)
                 throw new TimeoutException("Retry limit exceeded.  Try again later.");
 
             // Sleep for a small amount of time

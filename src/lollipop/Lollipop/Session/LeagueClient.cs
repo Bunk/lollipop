@@ -155,7 +155,7 @@ namespace Lollipop.Session
             // todo: Handle broadasts, server disconnects, etc
         }
 
-        private async void HandleConnection(TaskCompletionSource<bool> continuation)
+        private async Task HandleConnection(TaskCompletionSource<bool> continuation)
         {
             try
             {
@@ -168,10 +168,11 @@ namespace Lollipop.Session
             }
         }
 
-        private async void HandleDisconnect(TaskCompletionSource<bool> continuation)
+        private async Task HandleDisconnect(TaskCompletionSource<bool> continuation)
         {
             try
             {
+                // todo: this needs to cancel any awaiting tasks
                 IsConnected = await _connectionHandler.Disconnect(_connection);
                 continuation.TrySetResult(IsConnected);
             }
