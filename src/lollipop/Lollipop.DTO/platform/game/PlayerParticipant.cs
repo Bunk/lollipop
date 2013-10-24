@@ -2,10 +2,16 @@
 
 namespace com.riotgames.platform.game
 {
-    public class PlayerParticipant : VersionedObject
+    public class Participant : VersionedObject
+    {
+        
+    }
+
+    public class PlayerParticipant : Participant
     {
         public long accountId;
         public long summonerId;
+        public long teamParticipantId;
         public string partnerId;
         public int profileIconId;
         public int lastSelectedSkinIndex;
@@ -30,6 +36,7 @@ namespace com.riotgames.platform.game
         public string selectedPosition;
 
         public GameDifficulty botDifficulty;
+        public GamePickMode pickMode;
         public int badges; // probably bit enum
     }
 }

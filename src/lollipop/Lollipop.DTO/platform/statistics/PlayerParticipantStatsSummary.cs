@@ -12,6 +12,7 @@ namespace com.riotgames.platform.statistics
         public int spell2Id;
 
         public string summonerName;
+        public string skinName;
 
         public int wins;
         public int losses;

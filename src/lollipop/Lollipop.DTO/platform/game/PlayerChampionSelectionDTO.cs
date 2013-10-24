@@ -6,5 +6,6 @@
         public int selectedSkinIndex;
         public int spell1Id;
         public int spell2Id;
+        public string summonerInternalName;
     }
 }

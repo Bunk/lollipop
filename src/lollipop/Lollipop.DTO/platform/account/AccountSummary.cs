@@ -12,5 +12,7 @@
         public string username;
         public string summonerName;
         public string summonerInternalName;
+
+        public int groupCount;
     }
 }

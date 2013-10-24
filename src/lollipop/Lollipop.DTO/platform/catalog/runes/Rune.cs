@@ -14,6 +14,7 @@ namespace com.riotgames.platform.catalog.runes
         public string description;
         public string toolTip;
         public string imagePath;
+        public int uses;
 
         public RuneType runeType;
         public List<ItemEffect> itemEffects;

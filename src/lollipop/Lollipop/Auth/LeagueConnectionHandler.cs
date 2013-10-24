@@ -77,6 +77,9 @@ namespace Lollipop.Auth
         {
             try
             {
+                if (Session == null || string.IsNullOrWhiteSpace(Session.token))
+                    return;
+
                 var invoke = new Invocation<AcknowledgeMessage>("loginService", "logout", Session.token);
                 await invoke.Execute(connection);
             }
@@ -110,13 +113,13 @@ namespace Lollipop.Auth
                                                    "gn-" + session.accountSummary.accountId);
 
             var bcInvoke = new Invocation<object>(bcMessage);
-            await bcInvoke.Execute(connection);
+            var val1 = await bcInvoke.Execute(connection);
 
             var cnInvoke = new Invocation<object>(cnMessage);
-            await cnInvoke.Execute(connection);
+            var val2 = await cnInvoke.Execute(connection);
 
             var gnInvoke = new Invocation<object>(gnMessage);
-            await gnInvoke.Execute(connection);
+            var val3 = await gnInvoke.Execute(connection);
         }
 
         private static CommandMessage CreateSubscribeMessage(string subTopic, string clientId)

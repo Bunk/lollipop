@@ -10,6 +10,8 @@ namespace com.riotgames.platform.summoner
         //public Dictionary<string, object> summonerDefaultSpellMap;
         public Dictionary<string, SummonerGameModeSpells> summonerDefaultSpellMap;
 
+        public string summonerDefaultSpellsJson;
+
         public SummonerDefaultSpells()
         {
             summonerDefaultSpellMap = new Dictionary<string, SummonerGameModeSpells>();

@@ -12,6 +12,9 @@
         GAME_CFG_PICK_SIMUL,
         MATCHED_GAME,
         RANKED_GAME,
-        NORMAL_GAME
+        NORMAL_GAME,
+        COOP_VS_AI_GAME,
+        CUSTOM_GAME,
+        PRACTICE_GAME
     }
 }

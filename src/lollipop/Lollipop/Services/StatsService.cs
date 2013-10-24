@@ -16,9 +16,9 @@ namespace Lollipop.Services
             _conn = connection;
         }
 
-        public Task<PlayerLifeTimeStats> GetLifetimeStats(int accountId)
+        public Task<PlayerLifetimeStats> GetLifetimeStats(int accountId)
         {
-            return _conn.Call<PlayerLifeTimeStats>("playerStatsService", "retrievePlayerStatsByAccountId",
+            return _conn.Call<PlayerLifetimeStats>("playerStatsService", "retrievePlayerStatsByAccountId",
                 accountId, "CURRENT");
         }
 

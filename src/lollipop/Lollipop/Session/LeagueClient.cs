@@ -4,9 +4,11 @@ using System.Reflection;
 using System.Threading.Tasks;
 using com.riotgames.platform.login;
 using FluorineFx;
+using FluorineFx.Messaging.Messages;
 using FluorineFx.Net;
 using log4net;
 using Lollipop.Auth;
+using Lollipop.Utility;
 
 namespace Lollipop.Session
 {
@@ -93,7 +95,8 @@ namespace Lollipop.Session
             {
                 _connection = new NetConnection
                 {
-                    ObjectEncoding = ObjectEncoding.AMF3
+                    ObjectEncoding = ObjectEncoding.AMF3,
+                    Client = this // invoke callbacks on this object
                 };
 
                 _connection.OnConnect += (sender, args) => HandleConnection(t);
@@ -142,15 +145,20 @@ namespace Lollipop.Session
             return invocation.Execute(_connection);
         }
 
+        public void receive(AsyncMessage message)
+        {
+            Log.InfoFormat("RECV: {0}", message);
+        }
+
         /// <summary>
         ///     Called when an event is sent back to us from the server (async)
         /// </summary>
         private static void NetStatus(object sender, NetStatusEventArgs netStatusEventArgs)
         {
-            Log.InfoFormat("RECV: {0}\r\n{1}", netStatusEventArgs.Info, netStatusEventArgs.Exception);
+            Log.InfoFormat("RECV: {0}", netStatusEventArgs.Info.AsString());
 
             if (netStatusEventArgs.Exception != null)
-                Log.Error("RECV: ", netStatusEventArgs.Exception);
+                Log.Error("RECV ERROR: ", netStatusEventArgs.Exception);
 
             // todo: Handle broadasts, server disconnects, etc
         }

@@ -89,6 +89,7 @@
     <Compile Include="Session\LeagueRegion.cs" />
     <Compile Include="Session\LeagueSession.cs" />
     <Compile Include="Session\LeagueSessionFactory.cs" />
+    <Compile Include="Utility\ASObjectHelpers.cs" />
     <Compile Include="Utility\AsyncUtil.cs" />
   </ItemGroup>
   <ItemGroup>

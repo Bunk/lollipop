@@ -7,6 +7,6 @@
         public string tag;
         public string memberStatus;
         public string memberStatusString;
-        public float secondUntilEligibleForDeletion;
+        public float secondsUntilEligibleForDeletion;
     }
 }

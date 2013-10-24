@@ -4,7 +4,9 @@ namespace com.riotgames.platform.statistics
 {
     public class SummaryAggStats : VersionedObject
     {
-        public List<SummaryAggStat> stats { get; set; }
+        public string statsJson;
+
+        public List<SummaryAggStat> stats;
 
         public SummaryAggStats()
         {

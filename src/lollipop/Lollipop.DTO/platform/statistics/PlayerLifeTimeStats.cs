@@ -2,7 +2,7 @@
 
 namespace com.riotgames.platform.statistics
 {
-    public class PlayerLifeTimeStats : VersionedObject
+    public class PlayerLifetimeStats : VersionedObject
     {
         public int userId;
 
@@ -13,5 +13,7 @@ namespace com.riotgames.platform.statistics
         public PlayerStats playerStats;
         public PlayerStatSummaries playerStatSummaries;
         public LeaverPenaltyStats leaverPenaltyStats;
+
+        public string playerStatsJson;
     }
 }

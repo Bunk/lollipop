@@ -32,5 +32,6 @@ namespace com.riotgames.platform.statistics
         public PlayerStatSummaryType playerStatSummaryType;
 
         public SummaryAggStats aggregatedStats;
+        public string aggregatedStatsJson;
     }
 }

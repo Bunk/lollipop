@@ -4,7 +4,7 @@ namespace com.riotgames.platform.summoner
 {
     public class AllPublicSummonerDataDTO : VersionedObject
     {
-        public SpellBook spellBook;
+        public SpellBookDTO spellBook;
         public BasePublicSummonerDTO summoner;
         public SummonerDefaultSpells summonerDefaultSpells;
         public SummonerTalentsAndPoints summonerTalentsAndPoints;

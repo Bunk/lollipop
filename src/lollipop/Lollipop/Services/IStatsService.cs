@@ -8,7 +8,7 @@ namespace Lollipop.Services
 {
     public interface IStatsService
     {
-        Task<PlayerLifeTimeStats> GetLifetimeStats(int accountId);
+        Task<PlayerLifetimeStats> GetLifetimeStats(int accountId);
 
         Task<AggregatedStats> GetAggregatedStats(int accountId, GameMode mode);
 

@@ -32,7 +32,7 @@ namespace Lollipop.Tests.Session
         [Test]
         public async void Can_asynchronously_invoke_multiple_commands()
         {
-            var stats = await Client.Call<PlayerLifeTimeStats>("playerStatsService",
+            var stats = await Client.Call<PlayerLifetimeStats>("playerStatsService",
                                                                "retrievePlayerStatsByAccountId",
                                                                37685970, "CURRENT");
             var data = await Client.Call<AllPublicSummonerDataDTO>("summonerService",

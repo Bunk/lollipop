@@ -48,6 +48,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="leagues\pojo\LeagueItemDTO.cs" />
+    <Compile Include="leagues\pojo\LeagueListDTO.cs" />
+    <Compile Include="leagues\pojo\MiniSeriesDTO.cs" />
     <Compile Include="platform\account\AccountSummary.cs" />
     <Compile Include="platform\broadcast\BroadcastNotification.cs" />
     <Compile Include="platform\catalog\champion\ChampionDTO.cs" />
@@ -55,12 +58,15 @@
     <Compile Include="platform\catalog\Effect.cs" />
     <Compile Include="platform\catalog\ItemEffect.cs" />
     <Compile Include="platform\catalog\runes\Rune.cs" />
+    <Compile Include="platform\catalog\runes\RuneQuantity.cs" />
     <Compile Include="platform\catalog\runes\RuneType.cs" />
     <Compile Include="platform\game\BannedChampion.cs" />
+    <Compile Include="platform\game\BotParticipant.cs" />
     <Compile Include="platform\game\FeaturedObserverGames.cs" />
     <Compile Include="platform\game\GamePickMode.cs" />
     <Compile Include="platform\game\GameType.cs" />
     <Compile Include="platform\game\GameTypeConfigDTO.cs" />
+    <Compile Include="platform\game\ObfuscatedParticipant.cs" />
     <Compile Include="platform\game\ObserverGame.cs" />
     <Compile Include="platform\game\ObserverPlayerParticipant.cs" />
     <Compile Include="platform\game\PlatformGameLifecycleDTO.cs" />
@@ -76,9 +82,13 @@
     <Compile Include="platform\leagues\pojo\MiniSeriesDTO.cs" />
     <Compile Include="platform\login\AuthenticationCredentials.cs" />
     <Compile Include="platform\login\Session.cs" />
+    <Compile Include="platform\matchmaking\SearchingForMatchNotification.cs" />
+    <Compile Include="platform\messaging\StoreAccountBalanceNotification.cs" />
+    <Compile Include="platform\messaging\StoreFulfillmentNotification.cs" />
     <Compile Include="platform\messaging\UnexpectedServiceException.cs" />
     <Compile Include="platform\statistics\ChampionStatInfo.cs" />
     <Compile Include="platform\statistics\EndOfGameStats.cs" />
+    <Compile Include="platform\statistics\FellowPlayerInfo.cs" />
     <Compile Include="platform\statistics\GameMode.cs" />
     <Compile Include="platform\statistics\PlayerParticipantStatsSummary.cs" />
     <Compile Include="platform\statistics\RawStatDTO.cs" />

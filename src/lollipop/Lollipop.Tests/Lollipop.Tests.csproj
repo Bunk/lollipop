@@ -85,6 +85,7 @@
     <Compile Include="Repositories\ServiceTestsBase.cs" />
     <Compile Include="Repositories\StatsServiceTests.cs" />
     <Compile Include="Repositories\SummonerServiceTests.cs" />
+    <Compile Include="TestsInitializer.cs" />
     <Compile Include="Session\FlashRemotingClientTests.cs" />
     <Compile Include="Session\MultiAccountLeagueConnectionTests.cs" />
   </ItemGroup>

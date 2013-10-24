@@ -8,9 +8,11 @@ namespace com.riotgames.platform.statistics
     {
         public int? userId;
         public int gameId;
+        public int reportGameId;
         public string summonerName;
 
         public GameMode gameMode;
+        public GameType gameType;
         public LeagueQueue queueType;
         public string myTeamStatus;
 
@@ -22,6 +24,7 @@ namespace com.riotgames.platform.statistics
 
         public int gameLength; // in minutes
         public int timeUntilNextFirstWinBonus;
+        public int customMsecsUntilReset;
 
         public int elo;
         public int eloChange;
@@ -35,6 +38,7 @@ namespace com.riotgames.platform.statistics
         public int ipTotal;
         public int boostXpEarned;
         public int boostIpEarned;
+        public int odinBonusIp;
         public int completionBonusPoints;
         public int loyaltyBoostIpEarned;
         public int loyaltyBoostXpEarned;
@@ -45,12 +49,17 @@ namespace com.riotgames.platform.statistics
 
         public int skinIndex;
 
+        public string roomName;
         public string roomPassword;
+        public GameDifficulty difficulty;
+
+        public object newSpells;
 
         public TeamInfo myTeamInfo;
         public TeamInfo otherTeamInfo;
         public List<PlayerParticipantStatsSummary> teamPlayerParticipantStats;
         public List<PlayerParticipantStatsSummary> otherTeamPlayerParticipantStats;
+        public List<object> pointsPenalties;
 
         public EndOfGameStats()
         {

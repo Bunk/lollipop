@@ -69,8 +69,13 @@ namespace Lollipop.Session
         {
             _completionSource = new TaskCompletionSource<T>();
 
+            var disconnection = new DisconnectHandler((sender, args) => _completionSource.TrySetException(
+                new LeagueException("The connection to the server has been disconnected.")));
+
             try
             {
+                connection.OnDisconnect += disconnection;
+
                 var responder = new Responder<T>(Success, Failure);
                 if (_endpoint == null || _service == null)
                     connection.Call(_method, responder, _parameters);
@@ -80,6 +85,11 @@ namespace Lollipop.Session
             catch (Exception ex)
             {
                 _completionSource.TrySetException(ex);
+            }
+            finally
+            {
+                // todo: This immediately returns since we're using promises.  This needs to be implemented elsewhere.
+                connection.OnDisconnect -= disconnection;
             }
 
             return _completionSource.Task;
@@ -138,6 +148,8 @@ namespace Lollipop.Session
                         return new GameNotFoundException((string) rootCause["message"]);
                     case "com.riotgames.platform.game.GameObserverModeNotEnabledException":
                         return new GameNotObservableException((string) rootCause["message"]);
+                    case "org.springframework.security.authentication.AuthenticationCredentialsNotFoundException":
+                        return new LeagueException((string) rootCause["message"]);
                 }
             }
 

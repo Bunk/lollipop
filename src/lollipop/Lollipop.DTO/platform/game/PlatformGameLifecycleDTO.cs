@@ -28,11 +28,14 @@ namespace com.riotgames.platform.game
     public enum GameState
     {
         IN_PROGRESS,
+        TEAM_SELECT,
         CHAMP_SELECT,
         JOINING_CHAMP_SELECT,
         PRE_CHAMP_SELECT,
         POST_CHAMP_SELECT,
-        START_REQUESTED
+        START_REQUESTED,
+        TERMINATED,
+        TERMINATED_IN_ERROR
     }
 
     public enum TerminatedCondition
@@ -75,12 +78,13 @@ namespace com.riotgames.platform.game
         public GameState gameState;
         public GameType gameType;
         public GameMode gameMode;
+        public string gameStateString;
         public string terminatedCondition;
 
         public List<PlayerChampionSelectionDTO> playerChampionSelections;
         public List<BannedChampion> bannedChampions;
-        public List<PlayerParticipant> teamOne;
-        public List<PlayerParticipant> teamTwo;
+        public List<Participant> teamOne;
+        public List<Participant> teamTwo;
         public List<object> practiceGameRewardsDisabledReasons;
         public List<object> observers;
 
@@ -88,8 +92,8 @@ namespace com.riotgames.platform.game
         {
             playerChampionSelections = new List<PlayerChampionSelectionDTO>();
             bannedChampions = new List<BannedChampion>();
-            teamOne = new List<PlayerParticipant>();
-            teamTwo = new List<PlayerParticipant>();
+            teamOne = new List<Participant>();
+            teamTwo = new List<Participant>();
             practiceGameRewardsDisabledReasons = new List<object>();
             observers = new List<object>();
         }

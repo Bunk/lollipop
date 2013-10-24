@@ -4,6 +4,7 @@
     {
         public long gameId;
         public int summonerId;
+        public string summonerName;
         public int playerId; // account id
         public int championId;
         public int lastSelectedSkinIndex;

@@ -1,5 +1,5 @@
 ﻿using System.Collections.Generic;
-using com.riotgames.platform.leagues.pojo;
+using com.riotgames.leagues.pojo;
 
 namespace com.riotgames.platform.leagues.client.dto
 {

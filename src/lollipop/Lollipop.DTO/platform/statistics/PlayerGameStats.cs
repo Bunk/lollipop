@@ -9,7 +9,9 @@ namespace com.riotgames.platform.statistics
     {
         MATCHED_GAME,
         CUSTOM_GAME,
-        COOP_VS_AI_GAME
+        COOP_VS_AI_GAME,
+        RANKED_GAME,
+        NORMAL_GAME
     }
 
     public enum GameDifficulty
@@ -44,11 +46,13 @@ namespace com.riotgames.platform.statistics
 
         public DateTime createDate;
 
-        public GameType gameType;
+        public string gameType;
+        public GameType gameTypeEnum;
         public GameMode gameMode;
         public LeagueQueue queueType;
         public LeagueQueue subType;
         public GameDifficulty? difficulty;
+        public string difficultyString;
 
         public int timeInQueue;
         public int ipEarned;
@@ -64,9 +68,10 @@ namespace com.riotgames.platform.statistics
         public int premadeSize;
 
         public double predictedWinPct;
-        
+
         public List<FellowPlayerInfo> fellowPlayers;
         public List<RawStat> statistics;
+        public string rawStatsJson;
 
         public PlayerGameStats()
         {
