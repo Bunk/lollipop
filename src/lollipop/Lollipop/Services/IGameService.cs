@@ -5,8 +5,10 @@ namespace Lollipop.Services
 {
     public interface IGameService
     {
+        Task<FeaturedObserverGames> FeaturedGames();
+
         Task<PlatformGameLifecycleDTO> GetActiveGameFor(string summonerName);
 
-        Task<FeaturedObserverGames> FeaturedGames();
+        Task<GameDTO> GetGameTimerState(long gameId, GameState state = GameState.CHAMP_SELECT);
     }
 }

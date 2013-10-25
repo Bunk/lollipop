@@ -1,8 +1,9 @@
-﻿using com.riotgames.platform.statistics;
+﻿using com.riotgames.platform.reroll.pojo;
+using com.riotgames.platform.statistics;
 
 namespace com.riotgames.platform.game
 {
-    public class PlayerParticipant : Participant
+    public class AramPlayerParticipant : Participant
     {
         public long accountId;
         public long summonerId;
@@ -33,5 +34,7 @@ namespace com.riotgames.platform.game
         public GameDifficulty botDifficulty;
         public GamePickMode pickMode;
         public int badges; // probably bit enum
+
+        public PointSummary pointSummary;
     }
 }

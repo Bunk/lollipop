@@ -22,6 +22,12 @@ namespace Lollipop.Services
                                                              summonerName);
         }
 
+        public Task<GameDTO> GetGameTimerState(long gameId, GameState state = GameState.CHAMP_SELECT)
+        {
+            return _conn.Call<GameDTO>("gameService", "getLatestGameTimerState",
+                                       gameId, state, 1);
+        }
+
         public async Task<FeaturedObserverGames> FeaturedGames()
         {
             // note: This is an HTTP call

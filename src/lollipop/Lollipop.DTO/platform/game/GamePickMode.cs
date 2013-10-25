@@ -4,6 +4,6 @@
     {
         SimulPickStrategy,
         DraftModeSinglePickStrategy,
-        AllRandomPickStrategy
+        AllRandomPickStrategy = 2
     }
 }

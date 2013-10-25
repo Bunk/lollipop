@@ -148,6 +148,17 @@ namespace Lollipop.Session
         public void receive(AsyncMessage message)
         {
             Log.InfoFormat("RECV: {0}", message);
+            // todo: Handle the different types of messages that can show up here
+            // GameDTO
+            //   - When in the queue to join a game
+            // PlayerCredentialsDto
+            //   - When a game starts, this is filled with the observer server info
+            // EogPointChangeBreakdown
+            //   - After a game completes
+            // EndOfGameStats
+            //   - After a game completes
+            // StoreAccountBalanceNotification
+            //   - After a game completes
         }
 
         /// <summary>
