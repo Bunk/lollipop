@@ -11,19 +11,45 @@ namespace Lollipop.Session
     /// liklihood of any particular account being throttled due to an overload
     /// in requests.
     /// </summary>
-    public class MultiAccountLeagueConnection : ILeagueConnection
+    public class CompositeLeagueAccount : ILeagueAccount
     {
         private readonly List<ILeagueAccount> _clients;
         private int _index;
 
         public LeagueRegion Region { get; private set; }
 
-        public MultiAccountLeagueConnection()
+        public bool IsConnected
+        {
+            get
+            {
+                return _clients.Any(c => c.IsConnected);
+            }
+        }
+
+        public CompositeLeagueAccount()
         {
             _clients = new List<ILeagueAccount>();
         }
+        
+        public async Task Connect()
+        {
+            foreach (var account in _clients.Where(account => !account.IsConnected))
+            {
+                await account.Connect();
+            }
+        }
 
-        public MultiAccountLeagueConnection AddAccount(ILeagueAccount account)
+        public bool Disconnect()
+        {
+            var ret = false;
+            foreach (var account in _clients)
+            {
+                ret = account.Disconnect();
+            }
+            return ret;
+        }
+
+        public CompositeLeagueAccount AddAccount(ILeagueAccount account)
         {
             if (Region == null)
                 Region = account.Region;

@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace Lollipop.Auth
+namespace Lollipop.Session
 {
     public class AuthorizationResponse
     {

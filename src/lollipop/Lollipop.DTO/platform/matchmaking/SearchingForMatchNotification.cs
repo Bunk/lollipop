@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
 namespace com.riotgames.platform.matchmaking
 {
@@ -10,13 +6,6 @@ namespace com.riotgames.platform.matchmaking
     {
         public List<object> playerJoinFailures;
         public List<object> ghostGameSummoners;
-        public List<object> joinedQueues;
-    }
-
-    public class QueueDTO
-    {
-        public int queueId;
-        public int waitTime;
-        public int queueLength;
+        public List<QueueInfo> joinedQueues;
     }
 }

@@ -1,11 +1,22 @@
-﻿using System.Threading.Tasks;
+﻿using System;
+using System.Threading.Tasks;
+using com.riotgames.platform.login;
+using FluorineFx.Net;
 
 namespace Lollipop.Session
 {
-    public interface ILeagueConnection
+    public interface ILeagueConnection : IDisposable
     {
-        LeagueRegion Region { get; }
+        bool IsConnected { get; }
 
-        Task<T> Call<T>(string service, string method, params object[] parameters);
+        NetConnection Connection { get; }
+
+        LeagueConnection RouteEventsTo(object obj);
+
+        LeagueConnection Setup(Action<NetConnection> action);
+
+        Task<bool> Connect(LeagueRegion region, AuthenticationCredentials credentials);
+
+        bool Disconnect();
     }
 }

@@ -10,7 +10,7 @@ namespace Lollipop.Tests.Repositories
     [Category("Integration")]
     public class GameServiceTests : ServiceTestsBase<IGameService>
     {
-        protected override IGameService CreateService(ILeagueConnection connection)
+        protected override IGameService CreateService(ILeagueAccount connection)
         {
             return new GameService(connection);
         }

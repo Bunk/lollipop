@@ -10,9 +10,9 @@ namespace Lollipop.Services
 {
     public class LeagueService : ILeagueService
     {
-        private readonly ILeagueConnection _conn;
+        private readonly ILeagueAccount _conn;
 
-        public LeagueService(ILeagueConnection connection)
+        public LeagueService(ILeagueAccount connection)
         {
             _conn = connection;
         }

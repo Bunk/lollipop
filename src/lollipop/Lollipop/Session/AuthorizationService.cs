@@ -4,11 +4,10 @@ using System.Diagnostics;
 using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
-using Lollipop.Session;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 
-namespace Lollipop.Auth
+namespace Lollipop.Session
 {
     public class AuthorizationService : IAuthorize
     {

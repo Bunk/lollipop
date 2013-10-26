@@ -1,7 +1,6 @@
 ﻿using System.Threading.Tasks;
-using Lollipop.Session;
 
-namespace Lollipop.Auth
+namespace Lollipop.Session
 {
     public interface IAuthorize
     {

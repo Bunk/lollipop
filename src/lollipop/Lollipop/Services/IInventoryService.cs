@@ -12,9 +12,9 @@ namespace Lollipop.Services
 
     public class InventoryService : IInventoryService
     {
-        private readonly ILeagueConnection _conn;
+        private readonly ILeagueAccount _conn;
 
-        public InventoryService(ILeagueConnection connection)
+        public InventoryService(ILeagueAccount connection)
         {
             _conn = connection;
         }

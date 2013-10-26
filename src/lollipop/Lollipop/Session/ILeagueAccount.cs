@@ -10,7 +10,7 @@ namespace Lollipop.Session
 
         Task Connect();
 
-        Task Disconnect();
+        bool Disconnect();
 
         Task<T> Call<T>(string service, string method, params object[] args);
     }

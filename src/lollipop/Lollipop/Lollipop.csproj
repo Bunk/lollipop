@@ -56,12 +56,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Auth\AuthorizationResponse.cs" />
-    <Compile Include="Auth\AuthorizationService.cs" />
-    <Compile Include="Auth\IAuthorize.cs" />
-    <Compile Include="Auth\LeagueConnectionHandler.cs" />
-    <Compile Include="Auth\IConnectionHandler.cs" />
-    <Compile Include="Auth\ICredentials.cs" />
+    <Compile Include="Session\AuthorizationResponse.cs" />
+    <Compile Include="Session\AuthorizationService.cs" />
+    <Compile Include="Session\IAuthorize.cs" />
+    <Compile Include="Session\LeagueConnection.cs" />
+    <Compile Include="Session\ILeagueConnection.cs" />
+    <Compile Include="Session\ICredentials.cs" />
     <Compile Include="IIdentityMap.cs" />
     <Compile Include="ILeagueSession.cs" />
     <Compile Include="ILeagueSessionFactory.cs" />
@@ -74,21 +74,25 @@
     <Compile Include="Services\IStatsService.cs" />
     <Compile Include="Services\LeagueService.cs" />
     <Compile Include="Services\StatsService.cs" />
+    <Compile Include="Session\ConnectionAsyncWrapper.cs" />
+    <Compile Include="Session\CredentialManager.cs" />
+    <Compile Include="Session\HeartbeatManager.cs" />
     <Compile Include="Session\ILocateServerIP.cs" />
     <Compile Include="Session\IFlashRemotingClient.cs" />
     <Compile Include="Session\Invocation.cs" />
     <Compile Include="Session\LeagueClient.cs" />
     <Compile Include="Session\LocateServerIP.cs" />
     <Compile Include="Session\ILeagueAccount.cs" />
-    <Compile Include="Session\ILeagueConnection.cs" />
     <Compile Include="Services\ISummonerService.cs" />
     <Compile Include="Session\LeagueAccount.cs" />
     <Compile Include="Session\LeagueConnectionException.cs" />
-    <Compile Include="Session\MultiAccountLeagueConnection.cs" />
+    <Compile Include="Session\CompositeLeagueAccount.cs" />
     <Compile Include="Services\SummonerService.cs" />
     <Compile Include="Session\LeagueRegion.cs" />
     <Compile Include="Session\LeagueSession.cs" />
     <Compile Include="Session\LeagueSessionFactory.cs" />
+    <Compile Include="Session\SessionManager.cs" />
+    <Compile Include="Session\SubscriptionManager.cs" />
     <Compile Include="Utility\ASObjectHelpers.cs" />
     <Compile Include="Utility\AsyncUtil.cs" />
   </ItemGroup>

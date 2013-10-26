@@ -12,6 +12,7 @@
         GAME_CFG_PICK_SIMUL,
         MATCHED_GAME,
         RANKED_GAME,
+        RANKED_TEAM_GAME,
         NORMAL_GAME,
         COOP_VS_AI_GAME,
         CUSTOM_GAME,

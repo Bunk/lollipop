@@ -13,7 +13,7 @@ namespace Lollipop.Tests.Session
         {
             var client = new Mock<IFlashRemotingClient>();
             var account = new LeagueAccount(client.Object, LeagueRegion.NorthAmerica, "testUser1", "testPassword1");
-            var connection = new MultiAccountLeagueConnection()
+            var connection = new CompositeLeagueAccount()
                 .AddAccount(account);
 
             Assert.That(connection, Is.Not.Null);
@@ -26,7 +26,7 @@ namespace Lollipop.Tests.Session
             var client = new Mock<IFlashRemotingClient>();
             var account = new LeagueAccount(client.Object, LeagueRegion.NorthAmerica, "testUser1", "testPassword1");
             var account2 = new LeagueAccount(client.Object, LeagueRegion.Brazil, "testUser2", "testPassword2");
-            var connection = new MultiAccountLeagueConnection()
+            var connection = new CompositeLeagueAccount()
                 .AddAccount(account);
 
             Assert.Throws<LeagueException>(() => connection.AddAccount(account2));
@@ -35,7 +35,7 @@ namespace Lollipop.Tests.Session
         [Test]
         public void GetNextAccount_will_throw_when_no_accounts_are_added()
         {
-            var connection = new MultiAccountLeagueConnection();
+            var connection = new CompositeLeagueAccount();
 
             Assert.That(connection, Is.Not.Null);
             Assert.Throws<LeagueConnectionException>(() => connection.GetNextAccount());
@@ -51,7 +51,7 @@ namespace Lollipop.Tests.Session
 
             var acct1 = new LeagueAccount(client1.Object, LeagueRegion.NorthAmerica, "testUser1", "testPassword1");
             var acct2 = new LeagueAccount(client2.Object, LeagueRegion.NorthAmerica, "testUser2", "testPassword2");
-            var connection = new MultiAccountLeagueConnection()
+            var connection = new CompositeLeagueAccount()
                 .AddAccount(acct1)
                 .AddAccount(acct2);
 
@@ -72,7 +72,7 @@ namespace Lollipop.Tests.Session
             var acct1 = new LeagueAccount(client1.Object, LeagueRegion.NorthAmerica, "testUser1", "testPassword1");
             var acct2 = new LeagueAccount(client2.Object, LeagueRegion.NorthAmerica, "testUser2", "testPassword2");
             var acct3 = new LeagueAccount(client2.Object, LeagueRegion.NorthAmerica, "testUser3", "testPassword3");
-            var connection = new MultiAccountLeagueConnection()
+            var connection = new CompositeLeagueAccount()
                 .AddAccount(acct1)
                 .AddAccount(acct2)
                 .AddAccount(acct3);
@@ -96,7 +96,7 @@ namespace Lollipop.Tests.Session
             var acct3 = new Mock<ILeagueAccount>();
             acct3.Setup(x => x.IsConnected).Returns(true);
 
-            var errors = new MultiAccountLeagueConnection()
+            var errors = new CompositeLeagueAccount()
                 .AddAccount(acct1.Object)
                 .AddAccount(acct2.Object)
                 .AddAccount(acct3.Object)
@@ -119,7 +119,7 @@ namespace Lollipop.Tests.Session
             acct3.Setup(x => x.IsConnected).Returns(false);
             acct3.Setup(x => x.Connect()).Returns(Task.Factory.StartNew(() => { }));
 
-            var errors = new MultiAccountLeagueConnection()
+            var errors = new CompositeLeagueAccount()
                 .AddAccount(acct1.Object)
                 .AddAccount(acct2.Object)
                 .AddAccount(acct3.Object)
@@ -141,7 +141,7 @@ namespace Lollipop.Tests.Session
             var acct3 = new Mock<ILeagueAccount>();
             acct3.Setup(x => x.Connect()).Returns(Task.Factory.StartNew(() => { }));
 
-            var connection = new MultiAccountLeagueConnection()
+            var connection = new CompositeLeagueAccount()
                 .AddAccount(acct1.Object)
                 .AddAccount(acct2.Object)
                 .AddAccount(acct3.Object);

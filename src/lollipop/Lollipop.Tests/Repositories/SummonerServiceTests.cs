@@ -8,7 +8,7 @@ namespace Lollipop.Tests.Repositories
     [Category("Integration")]
     public class SummonerServiceTests : ServiceTestsBase<ISummonerService>
     {
-        protected override ISummonerService CreateService(ILeagueConnection connection)
+        protected override ISummonerService CreateService(ILeagueAccount connection)
         {
             return new SummonerService(connection);
         }

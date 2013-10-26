@@ -7,144 +7,90 @@ using FluorineFx;
 using FluorineFx.Messaging.Messages;
 using FluorineFx.Net;
 using log4net;
-using Lollipop.Auth;
 using Lollipop.Utility;
 
 namespace Lollipop.Session
 {
     public class LeagueClient : IFlashRemotingClient
     {
-        private const string ClientVersion = "3.12.13_09_24_17_41";
-        private const string ClientDomain = "lolclient.lol.riotgames.com";
-
         private static readonly ILog Log = LogManager.GetLogger(typeof (LeagueClient));
 
         private readonly IAuthorize _authorize;
-        private readonly IConnectionHandler _connectionHandler;
+        private readonly LeagueConnection _connections;
         private readonly ILocateServerIP _locateServer;
-        private NetConnection _connection;
-        private AuthenticationCredentials _credentials;
-        private LeagueRegion _region;
+        private readonly CredentialManager _credentialManager;
 
         static LeagueClient()
         {
             TypeHelper.AddTargetAssembly(Assembly.GetAssembly(typeof (AuthenticationCredentials)));
         }
 
-        public LeagueClient(ILocateServerIP locateServer, IAuthorize authorize, IConnectionHandler handler)
+        public LeagueClient(ILocateServerIP locateServer, IAuthorize authorize, LeagueConnection handler)
         {
             if (locateServer == null) throw new ArgumentNullException("locateServer");
             if (authorize == null) throw new ArgumentNullException("authorize");
 
-            _connectionHandler = handler;
+            _connections = handler;
             _locateServer = locateServer;
             _authorize = authorize;
+            _credentialManager = new CredentialManager();
         }
 
-        public string AuthToken { get; private set; }
-
-        public string ServerIp { get; private set; }
-
-        public bool IsConnected { get; private set; }
-
-        public IFlashRemotingClient Use(LeagueRegion region, string username, string password)
+        public bool IsConnected
         {
-            if (region == null) throw new ArgumentNullException("region");
-
-            if (IsConnected)
-                Disconnect();
-
-            _region = region;
-            _credentials = new AuthenticationCredentials
+            get
             {
-                clientVersion = ClientVersion,
-                domain = ClientDomain,
-                locale = CultureInfo.CurrentCulture.ToString().Replace("-", "_"),
-                ipAddress = ServerIp ?? "127.0.0.1",
-                username = username.ToLowerInvariant(),
-                password = password
-            };
-
-            return this;
-        }
-
-        public async Task Login()
-        {
-            if (IsConnected)
-                return;
-
-            ServerIp = await _locateServer.Locate(_region);
-            AuthToken = await _authorize.GetAuthToken(_region, _credentials.username, _credentials.password);
-
-            if (!string.IsNullOrWhiteSpace(AuthToken))
-                _credentials.authToken = AuthToken;
-
-            if (!string.IsNullOrWhiteSpace(ServerIp))
-                _credentials.ipAddress = ServerIp;
-        }
-
-        public Task Connect()
-        {
-            var t = new TaskCompletionSource<bool>();
-
-            if (_connection != null && IsConnected)
-            {
-                t.SetResult(true);
-            }
-            else
-            {
-                _connection = new NetConnection
-                {
-                    ObjectEncoding = ObjectEncoding.AMF3,
-                    Client = this // invoke callbacks on this object
-                };
-
-                _connection.OnConnect += (sender, args) => HandleConnection(t);
-                _connection.OnDisconnect += (sender, args) => HandleDisconnect(t);
-                _connection.NetStatus += NetStatus;
-
-                try
-                {
-                    _connection.Connect(_region.ServerUri.ToString());
-                }
-                catch (Exception ex)
-                {
-                    t.SetException(ex);
-                }
-            }
-
-            return t.Task;
-        }
-
-        public async Task Reconnect()
-        {
-            while (!IsConnected)
-            {
-                await Connect();
+                return _connections != null && _connections.IsConnected;
             }
         }
 
-        public Task Disconnect()
+        public async Task<bool> Connect(LeagueRegion region, string username, string password)
         {
-            return Task.Factory.StartNew(() =>
-            {
-                if (_connection != null)
-                {
-                    // todo: logout
-                    _connection.Close();
-                    _connection = null;
-                }
+            if (_connections.IsConnected)
+                return true;
 
-                IsConnected = false;
-            });
+            _connections
+                .RouteEventsTo(this)
+                .Setup(conn =>
+                {
+                    //conn.OnConnect += (sender, args) => IsConnected = true;
+                    conn.OnDisconnect += (sender, args) =>
+                    {
+                        if (IsConnected)
+                            _connections.Disconnect();
+                    };
+                    conn.NetStatus += NetStatus;
+                });
+
+            var serverIp = await _locateServer.Locate(region);
+            if (string.IsNullOrWhiteSpace(serverIp))
+                serverIp = "127.0.0.1";
+
+            var token = await _authorize.GetAuthToken(region, username, password);
+            if (string.IsNullOrWhiteSpace(token))
+                throw new LeagueConnectionException("Could not login to the server.");
+
+            var credentials = _credentialManager.Generate(serverIp, username, password, token);
+            return await _connections.Connect(region, credentials);
+        }
+
+        public bool Disconnect()
+        {
+            return _connections != null && _connections.Disconnect();
         }
 
         public Task<T> Call<T>(string service, string method, params object[] parameters)
         {
+            var connection = _connections.Connection;
+            if (connection == null || !connection.Connected)
+                throw new InvalidOperationException("The connection is not currently open.");
+
             var invocation = new Invocation<T>(service, method, parameters);
-            return invocation.Execute(_connection);
+            return invocation.Execute(connection);
         }
 
+        // ReSharper disable once InconsistentNaming
+        // - Note: this method is case-sensitive and is called by the NetConnection through reflection
         public void receive(AsyncMessage message)
         {
             Log.InfoFormat("RECV: {0}", message);
@@ -172,33 +118,6 @@ namespace Lollipop.Session
                 Log.Error("RECV ERROR: ", netStatusEventArgs.Exception);
 
             // todo: Handle broadasts, server disconnects, etc
-        }
-
-        private async Task HandleConnection(TaskCompletionSource<bool> continuation)
-        {
-            try
-            {
-                IsConnected = await _connectionHandler.Connect(_connection, _credentials);
-                continuation.TrySetResult(true);
-            }
-            catch (Exception ex)
-            {
-                continuation.TrySetException(ex);
-            }
-        }
-
-        private async Task HandleDisconnect(TaskCompletionSource<bool> continuation)
-        {
-            try
-            {
-                // todo: this needs to cancel any awaiting tasks
-                IsConnected = await _connectionHandler.Disconnect(_connection);
-                continuation.TrySetResult(IsConnected);
-            }
-            catch (Exception ex)
-            {
-                continuation.TrySetException(ex);
-            }
         }
     }
 }

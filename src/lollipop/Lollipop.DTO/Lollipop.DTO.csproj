@@ -88,6 +88,7 @@
     <Compile Include="platform\leagues\pojo\MiniSeriesDTO.cs" />
     <Compile Include="platform\login\AuthenticationCredentials.cs" />
     <Compile Include="platform\login\Session.cs" />
+    <Compile Include="platform\matchmaking\QueueInfo.cs" />
     <Compile Include="platform\matchmaking\SearchingForMatchNotification.cs" />
     <Compile Include="platform\messaging\StoreAccountBalanceNotification.cs" />
     <Compile Include="platform\messaging\StoreFulfillmentNotification.cs" />

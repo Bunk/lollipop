@@ -10,9 +10,9 @@ namespace Lollipop.Services
     {
         private const string Endpoint = "summonerService";
 
-        private readonly ILeagueConnection _conn;
+        private readonly ILeagueAccount _conn;
 
-        public SummonerService(ILeagueConnection connection)
+        public SummonerService(ILeagueAccount connection)
         {
             _conn = connection;
         }

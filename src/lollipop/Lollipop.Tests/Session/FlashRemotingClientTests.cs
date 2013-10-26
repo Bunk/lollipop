@@ -1,7 +1,6 @@
 ﻿using com.riotgames.platform.leagues.client.dto;
 using com.riotgames.platform.statistics;
 using com.riotgames.platform.summoner;
-using Lollipop.Auth;
 using Lollipop.Session;
 using NUnit.Framework;
 
@@ -15,17 +14,13 @@ namespace Lollipop.Tests.Session
 
         static FlashRemotingClientTests()
         {
-            Client = new LeagueClient(new LocateServerIP(), new AuthorizationService(), new LeagueConnectionHandler());
-            Client.Use(LeagueRegion.NorthAmerica, "BunkTester", "leaguetester1");
-
-            Client.Login().Wait();
-            Client.Connect().Wait();
+            Client = new LeagueClient(new LocateServerIP(), new AuthorizationService(), new LeagueConnection());
+            Client.Connect(LeagueRegion.NorthAmerica, "BunkTester", "leaguetester1").Wait();
         }
 
         [Test]
         public void Can_connect_to_riots_servers()
         {
-            Assert.That(Client.AuthToken, Is.Not.Null);
             Assert.That(Client.IsConnected, Is.True);
         }
 

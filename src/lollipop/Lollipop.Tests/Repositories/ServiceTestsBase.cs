@@ -1,21 +1,20 @@
-﻿using Lollipop.Auth;
-using Lollipop.Session;
+﻿using Lollipop.Session;
 using NUnit.Framework;
 
 namespace Lollipop.Tests.Repositories
 {
     public static class LeagueConnections
     {
-        public static readonly MultiAccountLeagueConnection Current;
+        public static readonly CompositeLeagueAccount Current;
 
         static LeagueConnections()
         {
-            var client1 = new LeagueClient(new LocateServerIP(), new AuthorizationService(), new LeagueConnectionHandler());
-            var client2 = new LeagueClient(new LocateServerIP(), new AuthorizationService(), new LeagueConnectionHandler());
+            var client1 = new LeagueClient(new LocateServerIP(), new AuthorizationService(), new LeagueConnection());
+            var client2 = new LeagueClient(new LocateServerIP(), new AuthorizationService(), new LeagueConnection());
             var account1 = new LeagueAccount(client1, LeagueRegion.NorthAmerica, "BunkTester", "leaguetester1");
             var account2 = new LeagueAccount(client2, LeagueRegion.NorthAmerica, "BunkTester2", "leaguetester2");
 
-            Current = new MultiAccountLeagueConnection()
+            Current = new CompositeLeagueAccount()
                 .AddAccount(account1)
                 .AddAccount(account2);
 
@@ -35,6 +34,6 @@ namespace Lollipop.Tests.Repositories
             Service = CreateService(LeagueConnections.Current);
         }
 
-        protected abstract T CreateService(ILeagueConnection connection);
+        protected abstract T CreateService(ILeagueAccount connection);
     }
 }

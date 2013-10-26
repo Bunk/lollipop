@@ -7,7 +7,7 @@ namespace com.riotgames.platform.game
         public long accountId;
         public long summonerId;
         public long teamParticipantId;
-        public long? partnerId;
+        public string partnerId; // can be an empty string... yay!
         public int profileIconId;
         public int lastSelectedSkinIndex;
         public int index;

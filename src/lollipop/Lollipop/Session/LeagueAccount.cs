@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System;
+using System.Threading.Tasks;
 
 namespace Lollipop.Session
 {
@@ -14,13 +15,16 @@ namespace Lollipop.Session
 
         public LeagueAccount(IFlashRemotingClient client, LeagueRegion region, string username, string password)
         {
+            if (region == null) throw new ArgumentNullException("region");
+            if (username == null) throw new ArgumentNullException("username");
+            if (password == null) throw new ArgumentNullException("password");
+            
             Region = region;
 
             _username = username;
             _password = password;
 
             _client = client;
-            _client.Use(Region, _username, _password);
         }
 
         public LeagueRegion Region { get; private set; }
@@ -35,12 +39,10 @@ namespace Lollipop.Session
             if (_client.IsConnected)
                 return;
 
-            _client.Use(Region, _username, _password);
-            await _client.Login();
-            await _client.Connect();
+            await _client.Connect(Region, _username, _password);
         }
 
-        public Task Disconnect()
+        public bool Disconnect()
         {
             return _client.Disconnect();
         }

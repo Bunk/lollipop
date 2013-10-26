@@ -11,7 +11,7 @@ namespace Lollipop.Tests.Repositories
     [TestFixture]
     public class StatsServiceTests : ServiceTestsBase<IStatsService>
     {
-        protected override IStatsService CreateService(ILeagueConnection connection)
+        protected override IStatsService CreateService(ILeagueAccount connection)
         {
             return new StatsService(connection);
         }

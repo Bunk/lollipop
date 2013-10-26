@@ -1,5 +1,4 @@
-﻿using Lollipop.Auth;
-using Lollipop.Session;
+﻿using Lollipop.Session;
 using NUnit.Framework;
 
 namespace Lollipop.Tests.Auth
