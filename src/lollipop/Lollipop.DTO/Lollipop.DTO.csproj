@@ -90,6 +90,7 @@
     <Compile Include="platform\login\Session.cs" />
     <Compile Include="platform\matchmaking\QueueInfo.cs" />
     <Compile Include="platform\matchmaking\SearchingForMatchNotification.cs" />
+    <Compile Include="platform\messaging\ClientLoginKickNotification.cs" />
     <Compile Include="platform\messaging\StoreAccountBalanceNotification.cs" />
     <Compile Include="platform\messaging\StoreFulfillmentNotification.cs" />
     <Compile Include="platform\messaging\UnexpectedServiceException.cs" />
