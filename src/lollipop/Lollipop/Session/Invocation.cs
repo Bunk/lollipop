@@ -15,6 +15,7 @@ namespace Lollipop.Session
         private readonly Func<Fault, Exception> _failure;
         private readonly object[] _parameters;
         private TaskCompletionSource<T> _completionSource;
+        private NetConnection _connection;
 
         public Invocation(params object[] parameters)
             : this(null, null, null, null, null, parameters)
@@ -67,15 +68,17 @@ namespace Lollipop.Session
 
         public Task<T> Execute(NetConnection connection)
         {
+            if (connection == null) throw new ArgumentNullException("connection");
+            if (_connection != null)
+                throw new InvalidOperationException("There is already a connection associated with this invocation.");
+
+            _connection = connection;
+            _connection.OnDisconnect += Disconnected;
+
             _completionSource = new TaskCompletionSource<T>();
-
-            var disconnection = new DisconnectHandler((sender, args) => _completionSource.TrySetException(
-                new LeagueException("The connection to the server has been disconnected.")));
-
+            
             try
             {
-                connection.OnDisconnect += disconnection;
-
                 var responder = new Responder<T>(Success, Failure);
                 if (_endpoint == null || _service == null)
                     connection.Call(_method, responder, _parameters);
@@ -85,11 +88,6 @@ namespace Lollipop.Session
             catch (Exception ex)
             {
                 _completionSource.TrySetException(ex);
-            }
-            finally
-            {
-                // todo: This immediately returns since we're using promises.  This needs to be implemented elsewhere.
-                connection.OnDisconnect -= disconnection;
             }
 
             return _completionSource.Task;
@@ -107,6 +105,14 @@ namespace Lollipop.Session
             return task;
         }
 
+        private void Disconnected(object sender, EventArgs args)
+        {
+            _connection.OnDisconnect -= Disconnected;
+
+            _completionSource.TrySetCanceled();
+            //_completionSource.TrySetException(new LeagueException("The connection to the server has been disconnected."));
+        }
+
         private void Success(T obj)
         {
             try
@@ -120,6 +126,10 @@ namespace Lollipop.Session
             {
                 _completionSource.TrySetException(ex);
             }
+            finally
+            {
+                _connection.OnDisconnect -= Disconnected;
+            }
         }
 
         private void Failure(Fault fault)
@@ -132,6 +142,10 @@ namespace Lollipop.Session
             catch (Exception ex)
             {
                 _completionSource.TrySetException(ex);
+            }
+            finally
+            {
+                _connection.OnDisconnect -= Disconnected;
             }
         }
 
