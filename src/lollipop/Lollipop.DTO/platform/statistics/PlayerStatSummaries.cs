@@ -6,6 +6,8 @@ namespace com.riotgames.platform.statistics
     {
         public int userId;
 
+        public int season;
+
         public List<PlayerStatSummary> playerStatSummarySet;
 
         public PlayerStatSummaries()

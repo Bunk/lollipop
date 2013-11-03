@@ -29,7 +29,7 @@ namespace Lollipop.Tests.Session
         {
             var stats = await Client.Call<PlayerLifetimeStats>("playerStatsService",
                                                                "retrievePlayerStatsByAccountId",
-                                                               37685970, "CURRENT");
+                                                               37685970, GameAge.CURRENT);
             var data = await Client.Call<AllPublicSummonerDataDTO>("summonerService",
                                                                    "getAllPublicSummonerDataByAccount",
                                                                    37685970);

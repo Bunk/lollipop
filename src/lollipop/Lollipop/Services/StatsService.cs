@@ -19,13 +19,13 @@ namespace Lollipop.Services
         public Task<PlayerLifetimeStats> GetLifetimeStats(int accountId)
         {
             return _conn.Call<PlayerLifetimeStats>("playerStatsService", "retrievePlayerStatsByAccountId",
-                accountId, "CURRENT");
+                accountId, GameAge.CURRENT);
         }
 
         public Task<AggregatedStats> GetAggregatedStats(int accountId, GameMode mode)
         {
             return _conn.Call<AggregatedStats>("playerStatsService", "getAggregatedStats",
-                accountId, mode.ToString(), "CURRENT");
+                accountId, mode.ToString(), GameAge.CURRENT);
         }
 
         public Task<List<TeamAggregatedStatsDTO>> GetAggregatedStats(TeamId teamId)

@@ -41,11 +41,14 @@ namespace com.riotgames.platform.game
         public GameMode gameMode;
         public string gameStateString;
         public string terminatedCondition;
+        public string terminatedConditionString;
 
         public List<PlayerChampionSelectionDTO> playerChampionSelections;
         public List<BannedChampion> bannedChampions;
         public List<Participant> teamOne;
+        public object teamOnePickOutcome;
         public List<Participant> teamTwo;
+        public object teamTwoPickOutcome;
         public List<object> practiceGameRewardsDisabledReasons;
         public List<object> observers;
 

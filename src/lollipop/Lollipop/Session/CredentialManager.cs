@@ -5,7 +5,7 @@ namespace Lollipop.Session
 {
     public class CredentialManager
     {
-        private const string ClientVersion = "3.12.13_09_24_17_41";
+        private const string ClientVersion = "3.13.13_10_28_21_11";
         private const string ClientDomain = "lolclient.lol.riotgames.com";
 
         public AuthenticationCredentials Generate(string serverIp, string username, string password, string token)

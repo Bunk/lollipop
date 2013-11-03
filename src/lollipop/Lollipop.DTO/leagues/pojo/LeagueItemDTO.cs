@@ -13,6 +13,7 @@ namespace com.riotgames.leagues.pojo
         public bool veteran;
         public bool inactive;
         public bool freshBlood;
+        public bool displayDecayWarning;
 
         public string playerOrTeamId;
         public string playerOrTeamName;
@@ -22,6 +23,7 @@ namespace com.riotgames.leagues.pojo
         public int wins;
         public int leaguePoints;
         public int previousDayLeaguePosition;
+        public int demotionWarning;
 
         /// <summary>
         /// Time last played in milliseconds

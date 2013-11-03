@@ -4,6 +4,8 @@
     {
         SimulPickStrategy,
         DraftModeSinglePickStrategy,
-        AllRandomPickStrategy = 2
+        AllRandomPickStrategy = 2,
+        SkipPickStrategy,
+        VotePickStrategy
     }
 }

@@ -15,4 +15,9 @@
         /// </summary>
         ARAM
     }
+
+    public enum GameAge
+    {
+        CURRENT = 3
+    }
 }
