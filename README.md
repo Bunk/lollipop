@@ -1,4 +1,4 @@
-lollipop
+Lollipop - A League of Legends Client API
 ========
 
 ![Lollipop](lollipop.png "Lollipop")
