@@ -22,6 +22,7 @@ namespace com.riotgames.platform.summoner
         public DateTime revisionDate;
 
         public string seasonOneTier;
+        public LeagueTier previousSeasonHighestTier;
 
         //Unknown type
         //public List<object> socialNetworkUserIds;

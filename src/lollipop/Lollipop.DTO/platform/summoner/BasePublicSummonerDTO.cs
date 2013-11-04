@@ -2,6 +2,7 @@
 {
     public enum LeagueTier
     {
+        UNRANKED,
         BRONZE,
         SILVER,
         GOLD,
