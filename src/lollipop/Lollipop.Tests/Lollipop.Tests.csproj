@@ -85,6 +85,7 @@
     <Compile Include="Repositories\StatsServiceTests.cs" />
     <Compile Include="Repositories\SummonerServiceTests.cs" />
     <Compile Include="Session\InvocationTests.cs" />
+    <Compile Include="Session\MockRtmpConnection.cs" />
     <Compile Include="TestsInitializer.cs" />
     <Compile Include="Session\FlashRemotingClientTests.cs" />
     <Compile Include="Session\MultiAccountLeagueConnectionTests.cs" />

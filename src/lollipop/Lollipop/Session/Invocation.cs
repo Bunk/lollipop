@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading;
 using System.Threading.Tasks;
 using FluorineFx;
 using FluorineFx.Net;
@@ -15,6 +16,8 @@ namespace Lollipop.Session
         private readonly object[] _parameters;
         private TaskCompletionSource<T> _completionSource;
         private IRtmpConnection _connection;
+
+        public TimeSpan DefaultTimeout { get; set; }
 
         public Invocation(params object[] parameters)
             : this(null, null, null, null, null, parameters)
@@ -48,7 +51,7 @@ namespace Lollipop.Session
         {
             if (service == null) throw new ArgumentNullException("service");
             if (method == null) throw new ArgumentNullException("method");
-            if (failure == null) throw new ArgumentNullException("success");
+            if (failure == null) throw new ArgumentNullException("failure");
         }
 
         public Invocation(string service, string method, Action<T> success, Func<Fault, Exception> failure, params object[] parameters)
@@ -88,9 +91,24 @@ namespace Lollipop.Session
             // defaults
             if (_endpoint == null)
                 _endpoint = Invocation.EndpointName;
+
+            DefaultTimeout = TimeSpan.FromSeconds(15);
         }
 
         public Task<T> Execute(IRtmpConnection connection)
+        {
+            return Execute(connection, DefaultTimeout);
+        }
+
+        public async Task<T> Execute(IRtmpConnection connection, TimeSpan timeout)
+        {
+            using (var token = new CancellationTokenSource(timeout))
+            {
+                return await Execute(connection, token.Token);
+            }
+        }
+
+        public Task<T> Execute(IRtmpConnection connection, CancellationToken cancellation)
         {
             if (connection == null) throw new ArgumentNullException("connection");
             if (_connection != null)
@@ -101,6 +119,9 @@ namespace Lollipop.Session
 
             _completionSource = new TaskCompletionSource<T>();
             
+            // note: There's no way to cancel the running task using FluorineFx's API...
+            cancellation.Register(() => Cancel(_completionSource));
+
             try
             {
                 var responder = new Responder<T>(Success, Failure);
@@ -119,10 +140,16 @@ namespace Lollipop.Session
 
         private void Disconnected(object sender, EventArgs args)
         {
-            _connection.OnDisconnect -= Disconnected;
+            Cancel(_completionSource);
+        }
 
-            _completionSource.TrySetCanceled();
-            //_completionSource.TrySetException(new LeagueException("The connection to the server has been disconnected."));
+        private void Cancel(TaskCompletionSource<T> tcs)
+        {
+            if (_connection != null)
+                _connection.OnDisconnect -= Disconnected;
+
+            if (tcs != null)
+                tcs.TrySetCanceled();
         }
 
         private void Success(T obj)
