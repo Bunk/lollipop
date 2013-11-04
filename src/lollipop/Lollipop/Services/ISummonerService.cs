@@ -6,16 +6,16 @@ namespace Lollipop.Services
 {
     public interface ISummonerService
     {
-        Task<string[]> GetNamesBySummonerId(params int[] summonerIds);
+        Task<string[]> NamesById(params int[] summonerIds);
 
-        Task<string> GetInternalName(string name);
+        Task<string> InternalName(string name);
 
-        Task<PublicSummoner> GetSummoner(string name);
+        Task<PublicSummoner> Get(string name);
 
-        Task<AllSummonerData> GetSummonerData(int accountId);
+        Task<AllSummonerData> Data(int accountId);
 
-        Task<AllPublicSummonerDataDTO> GetPublicSummonerData(int accountId);
+        Task<AllPublicSummonerDataDTO> PublicData(int accountId);
 
-        Task<Kudos> GetKudos(int summonerId);
+        Task<Kudos> Kudos(int summonerId);
     }
 }

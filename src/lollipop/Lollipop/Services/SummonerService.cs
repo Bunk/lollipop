@@ -17,28 +17,28 @@ namespace Lollipop.Services
             _conn = connection;
         }
 
-        public async Task<string[]> GetNamesBySummonerId(params int[] summonerIds)
+        public async Task<string[]> NamesById(params int[] summonerIds)
         {
             var values = await _conn.Call<List<string>>(Endpoint, "getSummonerNames", summonerIds);
             return values.ToArray();
         }
 
-        public Task<string> GetInternalName(string name)
+        public Task<string> InternalName(string name)
         {
             return _conn.Call<string>(Endpoint, "getSummonerInternalNameByName", name);
         }
 
-        public Task<PublicSummoner> GetSummoner(string name)
+        public Task<PublicSummoner> Get(string name)
         {
             return _conn.Call<PublicSummoner>(Endpoint, "getSummonerByName", name);
         }
 
-        public Task<AllSummonerData> GetSummonerData(int accountId)
+        public Task<AllSummonerData> Data(int accountId)
         {
             return _conn.Call<AllSummonerData>(Endpoint, "getAllSummonerDataByAccount", accountId);
         }
 
-        public Task<AllPublicSummonerDataDTO> GetPublicSummonerData(int accountId)
+        public Task<AllPublicSummonerDataDTO> PublicData(int accountId)
         {
             return _conn.Call<AllPublicSummonerDataDTO>(Endpoint, "getAllPublicSummonerDataByAccount", accountId);
         }
@@ -58,14 +58,14 @@ namespace Lollipop.Services
 //            return _conn.Call<MasteryBookDTO>("masteryBookService", "getMasteryBook", summonerId);
 //        }
 
-        public async Task<Kudos> GetKudos(int summonerId)
+        public async Task<Kudos> Kudos(int summonerId)
         {
             var payload = string.Format("{{\"commandName\":\"{0}\",\"summonerId\":{1}}}", "TOTALS", summonerId);
             var result = await _conn.Call<LcdsResponseString>("clientFacadeService", "callKudos", payload);
             if (result == null || string.IsNullOrWhiteSpace(result.value))
                 return null;
 
-            return Kudos.Parse(result.value);
+            return com.riotgames.platform.harassment.Kudos.Parse(result.value);
         }
     }
 }
