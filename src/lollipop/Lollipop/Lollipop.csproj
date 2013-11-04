@@ -91,6 +91,7 @@
     <Compile Include="Session\LeagueRegion.cs" />
     <Compile Include="Session\LeagueSession.cs" />
     <Compile Include="Session\LeagueSessionFactory.cs" />
+    <Compile Include="Session\NetConnectionWrapper.cs" />
     <Compile Include="Session\SessionManager.cs" />
     <Compile Include="Session\SubscriptionManager.cs" />
     <Compile Include="Utility\ASObjectHelpers.cs" />

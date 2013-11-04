@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Threading;
 using System.Threading.Tasks;
-using FluorineFx.Net;
 using LolSession = com.riotgames.platform.login.Session;
 
 namespace Lollipop.Session
@@ -19,7 +18,7 @@ namespace Lollipop.Session
             _sessionManager = sessionManager;
         }
 
-        public void Start(NetConnection connection)
+        public void Start(IRtmpConnection connection)
         {
             if (_heartbeat != null) 
                 return;
@@ -38,7 +37,7 @@ namespace Lollipop.Session
             _heartbeat = null;
         }
 
-        private async Task Run(NetConnection connection)
+        private async Task Run(IRtmpConnection connection)
         {
             var count = 1;
             var token = _tokenSource.Token;

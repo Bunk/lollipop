@@ -14,14 +14,14 @@ namespace Lollipop.Session
 
         private bool _disposed;
         private object _routingObject;
-        private Action<NetConnection> _setup;
+        private Action<IRtmpConnection> _setup;
         private SessionManager _sessions;
         private HeartbeatManager _heartbeat;
         private SubscriptionManager _subscriptions;
 
         public bool IsConnected { get; private set; }
 
-        public NetConnection Connection { get; private set; }
+        public IRtmpConnection Connection { get; private set; }
 
         public LeagueConnection()
         {
@@ -36,7 +36,7 @@ namespace Lollipop.Session
             return this;
         }
 
-        public LeagueConnection Setup(Action<NetConnection> action)
+        public LeagueConnection Setup(Action<IRtmpConnection> action)
         {
             _setup = action;
             return this;
@@ -99,12 +99,12 @@ namespace Lollipop.Session
             return IsConnected;
         }
 
-        private NetConnection Create()
+        private IRtmpConnection Create()
         {
-            var connection = new NetConnection
+            var connection = new NetConnectionWrapper(new NetConnection
             {
                 ObjectEncoding = ObjectEncoding.AMF3
-            };
+            });
 
             if (_setup != null)
             {

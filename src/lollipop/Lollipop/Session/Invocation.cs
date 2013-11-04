@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Threading;
 using System.Threading.Tasks;
 using FluorineFx;
 using FluorineFx.Net;
@@ -15,7 +14,7 @@ namespace Lollipop.Session
         private readonly Func<Fault, Exception> _failure;
         private readonly object[] _parameters;
         private TaskCompletionSource<T> _completionSource;
-        private NetConnection _connection;
+        private IRtmpConnection _connection;
 
         public Invocation(params object[] parameters)
             : this(null, null, null, null, null, parameters)
@@ -34,6 +33,31 @@ namespace Lollipop.Session
             : this(null, null, method, null, null, parameters)
         {
             if (method == null) throw new ArgumentNullException("method");
+        }
+
+        public Invocation(string service, string method, Action<T> success, params object[] parameters)
+            : this(null, service, method, success, null, parameters)
+        {
+            if (service == null) throw new ArgumentNullException("service");
+            if (method == null) throw new ArgumentNullException("method");
+            if (success == null) throw new ArgumentNullException("success");
+        }
+
+        public Invocation(string service, string method, Func<Fault, Exception> failure, params object[] parameters)
+            : this(null, service, method, null, failure, parameters)
+        {
+            if (service == null) throw new ArgumentNullException("service");
+            if (method == null) throw new ArgumentNullException("method");
+            if (failure == null) throw new ArgumentNullException("success");
+        }
+
+        public Invocation(string service, string method, Action<T> success, Func<Fault, Exception> failure, params object[] parameters)
+            : this(null, service, method, success, null, parameters)
+        {
+            if (service == null) throw new ArgumentNullException("service");
+            if (method == null) throw new ArgumentNullException("method");
+            if (success == null) throw new ArgumentNullException("success");
+            if (failure == null) throw new ArgumentNullException("failure");
         }
 
         public Invocation(string method, Action<T> success, params object[] parameters)
@@ -66,7 +90,7 @@ namespace Lollipop.Session
                 _endpoint = Invocation.EndpointName;
         }
 
-        public Task<T> Execute(NetConnection connection)
+        public Task<T> Execute(IRtmpConnection connection)
         {
             if (connection == null) throw new ArgumentNullException("connection");
             if (_connection != null)
@@ -91,18 +115,6 @@ namespace Lollipop.Session
             }
 
             return _completionSource.Task;
-        }
-
-        public Task<T> Execute(NetConnection connection, TimeSpan timeout)
-        {
-            var source = new CancellationTokenSource();
-            var task = Task.Run(() => Execute(connection), source.Token);
-
-            var completed = task.Wait(timeout);
-            if (!completed)
-                source.Cancel();
-
-            return task;
         }
 
         private void Disconnected(object sender, EventArgs args)

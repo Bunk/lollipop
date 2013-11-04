@@ -1,15 +1,14 @@
 ﻿using System;
 using System.Threading.Tasks;
-using FluorineFx.Net;
 
 namespace Lollipop.Session
 {
     public class ConnectionTask
     {
-        private readonly NetConnection _connection;
+        private readonly IRtmpConnection _connection;
         private TaskCompletionSource<bool> _completion;
 
-        public ConnectionTask(NetConnection connection)
+        public ConnectionTask(IRtmpConnection connection)
         {
             _connection = connection;
         }

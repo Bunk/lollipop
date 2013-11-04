@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Threading.Tasks;
 using com.riotgames.platform.login;
-using FluorineFx.Net;
 
 namespace Lollipop.Session
 {
@@ -9,11 +8,11 @@ namespace Lollipop.Session
     {
         bool IsConnected { get; }
 
-        NetConnection Connection { get; }
+        IRtmpConnection Connection { get; }
 
         LeagueConnection RouteEventsTo(object obj);
 
-        LeagueConnection Setup(Action<NetConnection> action);
+        LeagueConnection Setup(Action<IRtmpConnection> action);
 
         Task<bool> Connect(LeagueRegion region, AuthenticationCredentials credentials);
 

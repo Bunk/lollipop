@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Threading.Tasks;
 using FluorineFx.Messaging.Messages;
-using FluorineFx.Net;
 using LolSession = com.riotgames.platform.login.Session;
 
 namespace Lollipop.Session
@@ -17,7 +16,7 @@ namespace Lollipop.Session
             _sessionManager = sessionManager;
         }
 
-        public async Task Subscribe(NetConnection connection)
+        public async Task Subscribe(IRtmpConnection connection)
         {
             var session = _sessionManager.CurrentSession;
             if (session == null)

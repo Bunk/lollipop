@@ -17,7 +17,7 @@ namespace Lollipop.Session
 
         public LolSession CurrentSession { get; private set; }
 
-        public async Task<LolSession> Login(NetConnection connection, AuthenticationCredentials credentials)
+        public async Task<LolSession> Login(IRtmpConnection connection, AuthenticationCredentials credentials)
         {
             Credentials = credentials;
 
@@ -32,7 +32,7 @@ namespace Lollipop.Session
             return CurrentSession;
         }
 
-        public async Task Logout(NetConnection connection)
+        public async Task Logout(IRtmpConnection connection)
         {
             if (CurrentSession == null)
                 return;
@@ -45,7 +45,7 @@ namespace Lollipop.Session
             return;
         }
 
-        private static async Task AuthorizeSession(NetConnection connection, LolSession session)
+        private static async Task AuthorizeSession(IRtmpConnection connection, LolSession session)
         {
             connection.AddHeader(MessageBase.FlexClientIdHeader, false, session.token);
 
