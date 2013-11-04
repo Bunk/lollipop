@@ -14,6 +14,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lollipop", "Lollipop\Lollip
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lollipop.DTO", "Lollipop.DTO\Lollipop.DTO.csproj", "{D1F112AE-03A4-4E31-AC21-54382CC67602}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lollipop.Console", "Lollipop.Console\Lollipop.Console.csproj", "{FC666D49-D5D3-4CC4-BFA8-6AC91AB3E474}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -32,6 +34,10 @@ Global
 		{D1F112AE-03A4-4E31-AC21-54382CC67602}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D1F112AE-03A4-4E31-AC21-54382CC67602}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D1F112AE-03A4-4E31-AC21-54382CC67602}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FC666D49-D5D3-4CC4-BFA8-6AC91AB3E474}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FC666D49-D5D3-4CC4-BFA8-6AC91AB3E474}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FC666D49-D5D3-4CC4-BFA8-6AC91AB3E474}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FC666D49-D5D3-4CC4-BFA8-6AC91AB3E474}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
