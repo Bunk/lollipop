@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>$id$</id>
+    <version>$version$</version>
+    <title>$title$</title>
+    <authors>$author$</authors>
+    <owners>$author$</owners>
+    <licenseUrl>https://github.com/Bunk/lollipop/blob/master/LICENSE</licenseUrl>
+    <projectUrl>https://github.com/Bunk/lollipop</projectUrl>
+    <iconUrl>https://raw.github.com/Bunk/lollipop/master/lollipop_32x32.png</iconUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>$description$</description>
+    <copyright>Copyright 2013</copyright>
+    <tags>LeagueOfLegends league of legends</tags>
+  </metadata>
+</package>
